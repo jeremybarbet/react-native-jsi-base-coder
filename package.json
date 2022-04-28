@@ -1,0 +1,83 @@
+{
+  "name": "react-native-jsi-base-coder",
+  "version": "0.0.1",
+  "description": "Base64 and Base32 encoding/decoding for React Native written in C/C++ and JSI.",
+  "repository": "https://github.com/jeremybarbet/react-native-jsi-base-coder",
+  "author": "Jérémy Barbet <jeremgraph@gmail.com> (https://github.com/jeremybarbet)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeremybarbet/react-native-jsi-base-coder/issues"
+  },
+  "homepage": "https://github.com/jeremybarbet/react-native-jsi-base-coder#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "react-native-jsi-base-coder.podspec",
+    "!lib/typescript/example",
+    "!android/build",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "scripts": {
+    "typescript": "tsc --noEmit",
+    "prepare": "yarn build && yarn build:dts",
+    "build": "bob build",
+    "build:dts": "copyfiles -u 1 'src/types/*.d.ts' lib/typescript",
+    "release": "release-it",
+    "lint": "yarn lint:tsc && yarn lint:eslint && yarn lint:prettier",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit --skipLibCheck",
+    "lint:eslint": "eslint --fix '{src,example}/**/*.{ts,tsx}'",
+    "lint:ci": "yarn lint:tsc && yarn lint:eslint -f ./node_modules/@firmnav/eslint-github-actions-formatter/dist/formatter.js && yarn lint:prettier",
+    "lint:prettier": "prettier --write \"{src,example}/**/*.{md,js,jsx,ts,tsx}\"",
+    "format": "git ls-files -m | xargs yarn prettier --write --ignore-unknown --no-error-on-unmatched-pattern",
+    "submodule:update": "git submodule update --remote --merge"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "jsi",
+    "c++",
+    "base32"
+  ],
+  "devDependencies": {
+    "@firmnav/eslint-github-actions-formatter": "1.0.1",
+    "@release-it/conventional-changelog": "4.3.0",
+    "@types/react": "17.0.38",
+    "@types/react-native": "0.67.6",
+    "@typescript-eslint/eslint-plugin": "5.21.0",
+    "@typescript-eslint/parser": "5.21.0",
+    "copyfiles": "2.4.1",
+    "eslint": "8.14.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.5.0",
+    "eslint-plugin-react-native": "4.0.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "pod-install": "0.1.35",
+    "prettier": "2.6.2",
+    "react": "18.1.0",
+    "react-native": "0.68.1",
+    "react-native-builder-bob": "0.18.1",
+    "release-it": "14.14.2",
+    "typescript": "4.6.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
+}

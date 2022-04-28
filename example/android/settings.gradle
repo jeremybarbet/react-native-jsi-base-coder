@@ -1,0 +1,6 @@
+rootProject.name = 'BaseCoderExample'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+
+include ':reactnativejsibasecoder'
+project(':reactnativejsibasecoder').projectDir = new File(rootProject.projectDir, '../../android')

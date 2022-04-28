@@ -1,0 +1,24 @@
+{
+  "name": "react-native-jsi-base-coder-example",
+  "description": "Example app for react-native-jsi-base-coder",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios --simulator='iPhone 12 Pro (15.2)'",
+    "start": "react-native start",
+    "postinstall": "npx pod-install ios"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-native": "0.67.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.17.9",
+    "@babel/runtime": "7.17.9",
+    "babel-plugin-module-resolver": "4.1.0",
+    "metro-config": "0.70.2",
+    "metro-react-native-babel-preset": "0.70.2",
+    "typescript": "4.6.3"
+  }
+}
