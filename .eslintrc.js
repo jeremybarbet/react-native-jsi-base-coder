@@ -4,6 +4,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier', 'simple-import-sort'],
   ignorePatterns: ['.eslintrc.js'],
   rules: {
+    'prettier/prettier': 'error',
     'simple-import-sort/imports': [
       'error',
       {
