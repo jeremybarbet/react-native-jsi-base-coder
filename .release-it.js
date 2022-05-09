@@ -30,6 +30,10 @@ module.exports = {
             type: 'docs',
             section: '📚 Documentation',
           },
+          {
+            type: 'refactor',
+            section: '🚧 Refactoring',
+          },
         ],
       },
     },
