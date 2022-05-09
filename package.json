@@ -1,6 +1,6 @@
 {
   "name": "react-native-jsi-base-coder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Base64 and Base32 encoding/decoding for React Native written in C/C++ and JSI.",
   "repository": "https://github.com/jeremybarbet/react-native-jsi-base-coder",
   "author": "Jérémy Barbet <jeremgraph@gmail.com> (https://github.com/jeremybarbet)",
