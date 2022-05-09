@@ -27,6 +27,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
