@@ -48,6 +48,10 @@ Value BaseCoderHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
       auto algorithm = arguments[1].asObject(runtime).getProperty(runtime, "algorithm").toString(runtime).utf8(runtime);
       auto stringToEncode = arguments[0].asString(runtime).utf8(runtime);
 
+      if (stringToEncode.length() == 0) {
+        throw JSError(runtime, "[react-native-jsi-base-coder] The `stringToEncode` cannot be an empty string.");
+      }
+
       string result;
 
       if (algorithm == "base64Rfc4648") {
@@ -106,7 +110,7 @@ Value BaseCoderHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
       auto bytesToDecode = arguments[0].asString(runtime).utf8(runtime);
 
       if (bytesToDecode.length() == 0) {
-        throw JSError(runtime, "[react-native-jsi-base-coder] The `bytesToDecode` argument is an empty string.");
+        throw JSError(runtime, "[react-native-jsi-base-coder] The `bytesToDecode` cannot be an empty string.");
       }
 
       vector<unsigned char> result;
