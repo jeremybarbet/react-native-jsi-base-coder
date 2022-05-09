@@ -7,6 +7,8 @@ export enum Algorithm {
   'base32Rfc4648' = 'base32Rfc4648',
   'base32Crockford' = 'base32Crockford',
   'base32Hex' = 'base32Hex',
+  'base16Upper' = 'base16Upper',
+  'base16Lower' = 'base16Lower',
 }
 
 export interface Config {

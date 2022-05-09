@@ -1,6 +1,6 @@
 # react-native-jsi-base-coder
 
-Base64 and Base32 encoding/decoding for React Native written in C/C++ and JSI.
+Base64/32/16 encoding/decoding for React Native written in C/C++ and JSI.
 
 ## Installation
 
@@ -54,6 +54,8 @@ enum Algorithm {
   'base32Rfc4648' = 'base32Rfc4648',
   'base32Crockford' = 'base32Crockford',
   'base32Hex' = 'base32Hex',
+  'base16Upper' = 'base16Upper',
+  'base16Lower' = 'base16Lower',
 }
 
 encode('string to encode', { algorithm: Algorithm.base32Crockford });

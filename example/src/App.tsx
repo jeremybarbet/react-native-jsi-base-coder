@@ -27,6 +27,11 @@ export default () => {
     encodedHex: encode(rawString, { algorithm: Algorithm.base32Hex }),
   };
 
+  const base16 = {
+    encodedUpper: encode(rawString, { algorithm: Algorithm.base16Upper }),
+    encodedLower: encode(rawString, { algorithm: Algorithm.base16Lower }),
+  };
+
   const Base64Examples = () => (
     <>
       <SubHeading>Base64</SubHeading>
@@ -109,6 +114,35 @@ export default () => {
     </>
   );
 
+  const Base16Examples = () => (
+    <>
+      <SubHeading>Base16</SubHeading>
+      <Copy style={{ marginTop: 20 }}>Upper</Copy>
+
+      <Group>
+        <Copy style={{ marginBottom: 8 }}>{encodeValue(rawString)}</Copy>
+        <Copy>{base16.encodedUpper}</Copy>
+      </Group>
+
+      <Group>
+        <Copy style={{ marginBottom: 8 }}>{decodeValue(base16.encodedUpper)}</Copy>
+        <Copy>{decode(base16.encodedUpper, { algorithm: Algorithm.base16Upper })}</Copy>
+      </Group>
+
+      <Copy style={{ marginTop: 20 }}>Lower</Copy>
+
+      <Group>
+        <Copy style={{ marginBottom: 8 }}>{encodeValue(rawString)}</Copy>
+        <Copy>{base16.encodedLower}</Copy>
+      </Group>
+
+      <Group>
+        <Copy style={{ marginBottom: 8 }}>{decodeValue(base16.encodedLower)}</Copy>
+        <Copy>{decode(base16.encodedLower, { algorithm: Algorithm.base16Lower })}</Copy>
+      </Group>
+    </>
+  );
+
   return (
     <ScrollView>
       <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
@@ -119,6 +153,7 @@ export default () => {
         <View style={styles.group}>
           <Base64Examples />
           <Base32Examples />
+          <Base16Examples />
         </View>
       </View>
     </ScrollView>

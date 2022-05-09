@@ -1,7 +1,7 @@
 {
   "name": "react-native-jsi-base-coder",
   "version": "0.0.2",
-  "description": "Base64 and Base32 encoding/decoding for React Native written in C/C++ and JSI.",
+  "description": "Base64/32/16 encoding/decoding for React Native written in C/C++ and JSI.",
   "repository": "https://github.com/jeremybarbet/react-native-jsi-base-coder",
   "author": "Jérémy Barbet <jeremgraph@gmail.com> (https://github.com/jeremybarbet)",
   "license": "MIT",
@@ -31,6 +31,20 @@
     "!**/__fixtures__",
     "!**/__mocks__"
   ],
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "jsi",
+    "c++",
+    "base64",
+    "base32",
+    "base16",
+    "encode",
+    "decode",
+    "rfc4648",
+    "crockford"
+  ],
   "scripts": {
     "typescript": "tsc --noEmit",
     "prepare": "yarn build && yarn build:dts",
@@ -45,19 +59,6 @@
     "format": "git ls-files -m | xargs yarn prettier --write --ignore-unknown --no-error-on-unmatched-pattern",
     "submodule:update": "git submodule update --remote --merge"
   },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android",
-    "jsi",
-    "c++",
-    "base64",
-    "base32",
-    "encode",
-    "decode",
-    "rfc4648",
-    "crockford"
-  ],
   "devDependencies": {
     "@firmnav/eslint-github-actions-formatter": "1.0.1",
     "@release-it/conventional-changelog": "4.3.0",

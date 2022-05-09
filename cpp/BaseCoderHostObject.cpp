@@ -8,6 +8,9 @@
 #include "../cppcodec/cppcodec/base32_crockford.hpp"
 #include "../cppcodec/cppcodec/base32_hex.hpp"
 
+#include "../cppcodec/cppcodec/hex_upper.hpp"
+#include "../cppcodec/cppcodec/hex_lower.hpp"
+
 #include <jsi/jsi.h>
 #include <string>
 #include <iostream>
@@ -34,6 +37,9 @@ Value BaseCoderHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
   using base32Rfc4648 = cppcodec::base32_rfc4648;
   using base32Crockford = cppcodec::base32_crockford;
   using base32Hex = cppcodec::base32_hex;
+  
+  using base16Upper = cppcodec::hex_upper;
+  using base16Lower = cppcodec::hex_lower;
 
   if (propName == "encode") {
     auto encode = [this] (Runtime& runtime, const Value& thisValue, const Value* arguments, size_t count) -> Value {
@@ -57,37 +63,49 @@ Value BaseCoderHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
       if (algorithm == "base64Rfc4648") {
         string stringEncoded = base64Rfc4648::encode(stringToEncode);
 
-        result = stringEncoded.c_str();
+        result = stringEncoded;
       }
 
       if (algorithm == "base64Url") {
         string stringEncoded = base64Url::encode(stringToEncode);
 
-        result = stringEncoded.c_str();
+        result = stringEncoded;
       }
 
       if (algorithm == "base64UrlUnpadded") {
         string stringEncoded = base64UrlUnpadded::encode(stringToEncode);
 
-        result = stringEncoded.c_str();
+        result = stringEncoded;
       }
 
       if (algorithm == "base32Rfc4648") {
         string stringEncoded = base32Rfc4648::encode(stringToEncode);
 
-        result = stringEncoded.c_str();
+        result = stringEncoded;
       }
 
       if (algorithm == "base32Crockford") {
         string stringEncoded = base32Crockford::encode(stringToEncode);
 
-        result = stringEncoded.c_str();
+        result = stringEncoded;
       }
 
       if (algorithm == "base32Hex") {
         string stringEncoded = base32Hex::encode(stringToEncode);
 
-        result = stringEncoded.c_str();
+        result = stringEncoded;
+      }
+      
+      if (algorithm == "base16Upper") {
+        string stringEncoded = base16Upper::encode(stringToEncode);
+
+        result = stringEncoded;
+      }
+      
+      if (algorithm == "base16Lower") {
+        string stringEncoded = base16Lower::encode(stringToEncode);
+
+        result = stringEncoded;
       }
 
       return String::createFromUtf8(runtime, result);
@@ -113,51 +131,57 @@ Value BaseCoderHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
         throw JSError(runtime, "[react-native-jsi-base-coder] The `bytesToDecode` cannot be an empty string.");
       }
 
-      vector<unsigned char> result;
+      string result;
 
       if (algorithm == "base64Rfc4648") {
-        vector<unsigned char> bytesDecoded = base64Rfc4648::decode(bytesToDecode);
+        vector<uint8_t> bytesDecoded = base64Rfc4648::decode(bytesToDecode);
 
-        result = bytesDecoded;
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
       }
 
       if (algorithm == "base64Url") {
-        vector<unsigned char> bytesDecoded = base64Url::decode(bytesToDecode);
+        vector<uint8_t> bytesDecoded = base64Url::decode(bytesToDecode);
 
-        result = bytesDecoded;
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
       }
 
       if (algorithm == "base64UrlUnpadded") {
-        vector<unsigned char> bytesDecoded = base64UrlUnpadded::decode(bytesToDecode);
+        vector<uint8_t> bytesDecoded = base64UrlUnpadded::decode(bytesToDecode);
 
-        result = bytesDecoded;
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
       }
 
       if (algorithm == "base32Rfc4648") {
-        vector<unsigned char> bytesDecoded = base32Rfc4648::decode(bytesToDecode);
+        vector<uint8_t> bytesDecoded = base32Rfc4648::decode(bytesToDecode);
 
-        result = bytesDecoded;
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
       }
 
       if (algorithm == "base32Crockford") {
-        vector<unsigned char> bytesDecoded = base32Crockford::decode(bytesToDecode);
+        vector<uint8_t> bytesDecoded = base32Crockford::decode(bytesToDecode);
 
-        result = bytesDecoded;
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
       }
 
       if (algorithm == "base32Hex") {
-        vector<unsigned char> bytesDecoded = base32Hex::decode(bytesToDecode);
+        vector<uint8_t> bytesDecoded = base32Hex::decode(bytesToDecode);
 
-        result = bytesDecoded;
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
+      }
+      
+      if (algorithm == "base16Upper") {
+        vector<uint8_t> bytesDecoded = base16Upper::decode(bytesToDecode);
+
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
+      }
+      
+      if (algorithm == "base16Lower") {
+        vector<uint8_t> bytesDecoded = base16Lower::decode(bytesToDecode);
+
+        result.assign(bytesDecoded.begin(), bytesDecoded.end());
       }
 
-      string s;
-
-      transform(result.begin(), result.end(), back_inserter(s), [](char c) {
-        return c;
-      });
-
-      return String::createFromUtf8(runtime, s);
+      return String::createFromUtf8(runtime, result);
     };
 
     return Function::createFromHostFunction(runtime, PropNameID::forUtf8(runtime, "decode"), 0, decode);
