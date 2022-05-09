@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Platform, StyleSheet, Text } from 'react-native';
 
 import { useTheme } from '../hooks/use-theme';
 
@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '700',
 
-    marginTop: 80,
+    marginTop: Platform.OS === 'android' ? 40 : 80,
   },
 });
