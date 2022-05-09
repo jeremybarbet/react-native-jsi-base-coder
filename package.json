@@ -51,7 +51,12 @@
     "android",
     "jsi",
     "c++",
-    "base32"
+    "base64",
+    "base32",
+    "encode",
+    "decode",
+    "rfc4648",
+    "crockford"
   ],
   "devDependencies": {
     "@firmnav/eslint-github-actions-formatter": "1.0.1",
