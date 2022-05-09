@@ -20,15 +20,11 @@ module.exports = {
           },
           {
             type: 'fix',
-            section: '🐛 Bug Fixes',
+            section: '🐛 Bug fixes',
           },
           {
-            type: 'perf',
-            section: '💨 Performance Improvements',
-          },
-          {
-            type: 'chore(deps)',
-            section: '🛠️ Dependency Upgrades',
+            type: 'chore',
+            section: '🛠️ Misc chores',
           },
           {
             type: 'docs',
