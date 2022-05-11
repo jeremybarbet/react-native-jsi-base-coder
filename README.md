@@ -4,8 +4,17 @@ Base64/32/16 encoding/decoding for React Native written in C/C++ and JSI.
 
 ## Installation
 
+### React Native
+
 ```bash
 yarn add react-native-jsi-base-coder
+```
+
+### Expo
+
+```bash
+expo install react-native-jsi-base-coder
+expo prebuild
 ```
 
 ## Usage
